@@ -16,12 +16,12 @@ namespace :db do
                    password_confirmation: password)
     end
 
-		users = User.all(limit: 6)
-		10.times do |n|
-			name = Faker::Name.name
-			email = "patient-example-#{n+1}@railstutorial.org"
-			users.each { |user| user.patients.create!(name: name,
-                email: email) }
-		end
+    User.all(limit: 6).each do |user|
+      10.times do |n|
+        name = Faker::Name.name
+        email = "patient-example-#{n+1}@railstutorial.org"
+        user.patients.create!(name: name, email: email)
+      end
+    end
   end
 end
